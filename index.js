@@ -45,7 +45,7 @@ function Reporter (patch) {
 
 	// Mixin streaming / logging functionality
 	reporter.write = logger.info;
-	reporter.log   = logger.verbose;
+	reporter.log   = logger;
 
 	/**
 	 * Mixin `extend()` method
