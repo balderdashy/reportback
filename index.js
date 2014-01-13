@@ -4,6 +4,7 @@
 
 var _ = require('lodash')
 	, switchback = require('node-switchback')
+	, mergeDefaults = require('merge-defaults')
 	, logger = (new (require('captains-log'))());
 
 
@@ -20,28 +21,40 @@ var _ = require('lodash')
  * Usage:
  * require('reporter')
  *
- * @return {Reporter} special case of Switchback
  */
-module.exports = function (properties) {
+module.exports = Reporter;
 
-	properties = _.merge({
+/**
+ * Factory
+ * 
+ * @param  {Object|Function} patch
+ * @return {Reporter} a new reporter
+ */
+function Reporter (patch) {
 
-		// Callbacks
+	if ( ! (_.isFunction(patch) || _.isObject(patch)) ) {
+		throw new Error('Invalid usage: must provide a function or object.');
+	}
+
+	// Construct a switchback
+	var reporter = switchback(patch, {
 		success: (function(){}),
 		error  : (logger.error),
-		end    : (function(){}),
+		end    : (function(){})
+	});
 
-		// Events
-		write  : logger.info,
-		log    : logger.verbose
-	}, properties || {});
+	// Mixin streaming / logging functionality
+	reporter.write = logger.info;
+	reporter.log   = logger.verbose;
 
-	var reporter = switchback(properties);
-	reporter.extend = function (patch) {
-		var patchedCopy = _.merge({}, properties, patch);
-		return newReporter(patchedCopy);
-	};
+	/**
+	 * Mixin `extend()` method
+	 * @param  {Object|Function} patch
+	 * @return {Reporter} a new reporter
+	 */
+	reporter.extend = Reporter;
+
 	return reporter;
-};
+}
 
 
