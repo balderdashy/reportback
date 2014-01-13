@@ -14,7 +14,7 @@
     "reportback",
     "switchback",
     "logger",
-    "reporter"
+    "reporter",
     "streaming"
   ],
   "author": "Mike McNeil",
