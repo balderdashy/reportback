@@ -1,0 +1,32 @@
+{
+  "name": "reportback",
+  "version": "0.0.0",
+  "description": "Somewhere between a stream, a switchback, a logger, and an EventEmitter.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/balderdashy/reportback.git"
+  },
+  "keywords": [
+    "reportback",
+    "switchback",
+    "logger",
+    "reporter"
+    "streaming"
+  ],
+  "author": "Mike McNeil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/balderdashy/reportback/issues"
+  },
+  "homepage": "https://github.com/balderdashy/reportback",
+  "dependencies": {
+    "root-require": "~0.2.0",
+    "lodash": "~2.4.1",
+    "node-switchback": "0.0.4",
+    "captains-log": "~0.10.6"
+  }
+}
