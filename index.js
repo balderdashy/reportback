@@ -31,7 +31,7 @@ module.exports = Reporter;
  * @return {Reporter} a new reporter
  */
 function Reporter (patch) {
-
+	patch = patch || {};
 	if ( ! (_.isFunction(patch) || _.isObject(patch)) ) {
 		throw new Error('Invalid usage: must provide a function or object.');
 	}
