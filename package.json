@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/mikermcneil/reportback",
   "dependencies": {
-    "root-require": "~0.2.0",
     "lodash": "~2.4.1",
     "node-switchback": "0.0.4",
     "captains-log": "~0.10.6",
