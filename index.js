@@ -28,10 +28,12 @@ module.exports = Reporter;
  * Factory
  * 
  * @param  {Object|Function} patch
+ * @param  {Object} defaultHandlers
  * @return {Reporter} a new reporter
  */
-function Reporter (patch) {
+function Reporter (patch, defaultHandlers) {
 	patch = patch || {};
+	defaultHandlers = defaultHandlers || {};
 	if ( ! (_.isFunction(patch) || _.isObject(patch)) ) {
 		throw new Error('Invalid usage: must provide a function or object.');
 	}
@@ -41,11 +43,11 @@ function Reporter (patch) {
 	
 
 	// Construct a switchback
-	var reporter = switchback(patch, {
+	var reporter = switchback(patch, _.defaults(defaultHandlers, {
 		success: (function(){}),
 		error  : (logger.error),
 		end    : (function(){})
-	});
+	}));
 
 	// Mixin streaming / logging functionality
 	reporter.write = logger.info;
