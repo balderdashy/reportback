@@ -5,7 +5,7 @@
 var _ = require('lodash')
 	, switchback = require('node-switchback')
 	, mergeDefaults = require('merge-defaults')
-	, logger = (new (require('captains-log'))());
+	, captains = require('captains-log');
 
 
 
@@ -35,6 +35,10 @@ function Reporter (patch) {
 	if ( ! (_.isFunction(patch) || _.isObject(patch)) ) {
 		throw new Error('Invalid usage: must provide a function or object.');
 	}
+
+	// Construct logger
+	var logger = captains();
+	
 
 	// Construct a switchback
 	var reporter = switchback(patch, {
