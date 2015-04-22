@@ -1,6 +1,6 @@
 {
   "name": "reportback",
-  "version": "1.0.1",
+  "version": "0.1.9",
   "description": "Somewhere between a stream, a switchback, a logger, and an EventEmitter.",
   "main": "index.js",
   "scripts": {
