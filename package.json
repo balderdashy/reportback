@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/mikermcneil/reportback",
   "dependencies": {
-    "captains-log": "^1.0.1",
+    "captains-log": "^2.0.2",
     "switchback": "^2.0.1"
   }
 }
